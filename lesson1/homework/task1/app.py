@@ -8,7 +8,7 @@
     - 1 -> нет
  """
 
-listDay = ["Понедельник", "Вторник", "Среда",
+listDay = [" ", "Понедельник", "Вторник", "Среда",
            "Четверг", "Пятница", "Суббота", "Воскресенье"]
 
 dayoff1 = 6
@@ -19,9 +19,8 @@ inputData = int(
     input("Введите день недели, от 1 до 7 (где понедельник = 1, воскресенье = 7 >>>"))
 
 if (inputData == dayoff1) or (inputData == dayoff2):
-    print(f'{listDay[inputData - 1]} является выходным днём')
-elif (inputData < len(listDay))and inputData>(len(listDay)):
-    print("Число должно быть в диапазоне от 1 (понедельник) до 7 (воскресенье)")
-elif print(f'{listDay[inputData -1]} является рабочим днём'):
+    print(f'{listDay[inputData]} является выходным днём')
+elif (inputData > 7) or (inputData <1):
+    print(f'{inputData} - такого дня нету ((')
 else:
-print("error")
+    print(f'{listDay[inputData]} является рабочим днём')
