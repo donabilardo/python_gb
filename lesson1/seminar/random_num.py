@@ -9,4 +9,4 @@ for i in range(n):
     #lst.append(num)
     lst.append(randint(-1000,1000)) #без переменной, слуйчайное число сразу пишем в список lst
 
-print(lst)
+#print(lst)
