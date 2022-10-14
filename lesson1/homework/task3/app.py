@@ -14,6 +14,7 @@ y = int(input('y= '))
 
 if (x == 0 and y == 0) or (x > 0 and y == 0) or (x < 0 and y == 0) or (x == 0 and y > 0) or (x == 0 and y < 0):
     print("Значения координат НЕ должны быть равны 0")
+    exit()
 elif x > 0 and y > 0:
     print("Координаты точек принадлежат к 1 четверти")
 elif x < 0 and y > 0:
