@@ -9,10 +9,6 @@ pointB = float(input("Координа точки B >>> "))
 
 
 def dist (pointA, pointB):
-    if pointA < 0:
-      pointA = pointA * -1
-    elif pointB < 0:
-        pointB = pointB * -1
 
     if pointA > pointB:
         result = pointA - pointB
