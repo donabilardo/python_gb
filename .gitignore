@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
@@ -211,3 +212,6 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+=======
+__pycache__/
+>>>>>>> 39134de4dc38db8e1a03c25c4d6ebe7bb84fe3f8
