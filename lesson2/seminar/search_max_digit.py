@@ -2,11 +2,13 @@
 
 listDigit = [111, 55, 656, 8, -3]
 
-max_ = 0
+""" max_ = 0
 
 for elementList in listDigit:
     if elementList > max_:
-        max_ = elementList
+        max_ = elementList """
 
+# поиск с помощью сортировки
 
-print(max_)
+listDigit.sort()
+print(listDigit[-1])  # выводим последний осортированный элемент из списка
