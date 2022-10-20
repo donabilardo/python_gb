@@ -10,5 +10,10 @@ for elementList in listDigit:
 
 # поиск с помощью сортировки
 
-listDigit.sort()
-print(listDigit[-1])  # выводим последний осортированный элемент из списка
+""" listDigit.sort()
+print(listDigit[-1]) """  # выводим последний осортированный элемент из списка
+
+
+# поиск с помсощью встроенной функции max
+
+print(max(listDigit))
