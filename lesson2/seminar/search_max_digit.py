@@ -1,11 +1,12 @@
 # Поиск максимального числа
 
-listDigit = [1, 55, 656, 8, -3]
+listDigit = [111, 55, 656, 8, -3]
 
-max = 0
+max_ = 0
 
 for elementList in listDigit:
-    if elementList > max:
-        max = elementList
+    if elementList > max_:
+        max_ = elementList
 
-print(max)
+
+print(max_)
