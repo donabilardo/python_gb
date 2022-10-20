@@ -7,7 +7,7 @@
     - 7 -> да
     - 1 -> нет
 
-  [Решение](https://github.com/donabilardo/python_gb/tree/master/lesson1/homework/task1 "Перейти к решению задачи")
+  [Решение](https://github.com/donabilardo/python_gb/tree/lesson1/lesson1/homework/task1 "Перейти к решению задачи")
 
 ***
 

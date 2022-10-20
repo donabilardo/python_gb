@@ -8,17 +8,19 @@
     - 1 -> нет
  """
 
-lisеDay = ("Понедельник", "Вторник", "Среда",
-           "Четверг", "Пятница", "Суббота", "Воскресенье")
+listDay = [" ", "Понедельник", "Вторник", "Среда",
+           "Четверг", "Пятница", "Суббота", "Воскресенье"]
 
 dayoff1 = 6
 dayoff2 = 7
 
+
 inputData = int(
-    input("Введите день недели, от 1 до 7 (где понедельник = 1, воскресенье = 7 >>>"))-1
+    input("Введите день недели, от 1 до 7 (где понедельник = 1, воскресенье = 7 >>>"))
 
-
-if inputData == dayoff1 and inputData == dayoff2:
-    print(f'{list[inputData]} является выходным днём')
+if (inputData == dayoff1) or (inputData == dayoff2):
+    print(f'{listDay[inputData]} является выходным днём')
+elif (inputData > 7) or (inputData <1):
+    print(f'{inputData} - такого дня нету ((')
 else:
-    print(f'{list[inputData]} является рабочим днём')
+    print(f'{listDay[inputData]} является рабочим днём')
