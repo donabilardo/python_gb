@@ -14,8 +14,8 @@ b) Подумайте как наделить бота ""интеллектом"
 
 
 from random import randint
-ostalostKonfet = 2021 #количество оставшихся конфет
-count = 0 #счётчик ходов
+ostalostKonfet = 20 #количество оставшихся конфет
+count = 1 #счётчик ходов
 lot = randint(1,2) #выбираем рандомно кто будет ходить Игрок1 или Игрок 2
 
 if lot == 1: #если 1 то ходит игрок1
@@ -25,13 +25,16 @@ elif lot == 2: #если 2 то ходит игрок2
 
 flag = lot #тут храним очередность ходов
 
-while ostalostKonfet >= 0:
+while True:
     print(f'\n******** Ход номер: {count} ********')
     if flag == 1:
         print(f'Ходит Игрок{flag}')
-        beremKonfety = int(input("Скалько возьмем конфет? "))
+        beremKonfety = int(input("Сколько возьмем конфет? "))
         if (beremKonfety <= 0) or (beremKonfety > 28):
             print("Допускается брать от 1 до 28 конфет включительно")
+            break
+        elif ostalostKonfet <= 0:
+            print(f"Победил Игрок{flag}, забрал конфеты за {count} ходов")
             break
         else:
             ostalostKonfet = ostalostKonfet - beremKonfety    
@@ -40,9 +43,12 @@ while ostalostKonfet >= 0:
             print(f'Осталось конфет {ostalostKonfet}')
     elif flag == 2:
         print(f'Ходит Игрок{flag}')
-        beremKonfety = int(input("Скалько возьмем конфет? "))
+        beremKonfety = int(input("Сколько возьмем конфет? "))
         if (beremKonfety <= 0) or (beremKonfety > 28):
             print("Допускается брать от 1 до 28 конфет включительно")
+            break
+        elif ostalostKonfet <= 0:
+            print(f"Победил Игрок{flag}, забрал конфеты за {count} ходов")
             break
         else:
             ostalostKonfet = ostalostKonfet - beremKonfety    
