@@ -1,14 +1,17 @@
 import funct
+import csv
+
 contact = {}
 
 
 def display_contact():
-    print(contact.items())
-    print("Имя\t\tТелефон")
-    for key, value in contact:
-        #print("{}\t\t{}".format(key,contact.get(key)))
-        print(f'Имя {key} || телефон {value}')
-
+#    print(contact.items())
+#    print("Имя\t\tТелефон")
+#    for key, value in contact:
+#        print("{}\t\t{}".format(key,contact.get(key)))
+#       print(f'Имя {key} || телефон {value}')
+    for user, phone in contact.items():
+        print(f"Имя: {user}  Телефон: {phone} \n")
 
 while True:
     choice = int(input(" 1. Добавить контакт \n 2. Найти контакт \n 3. Отобразить контакты\n 4. Редактировать контакт \n 5. Удалить контакт \n 6. Экспортировать контакты в CSV\n 8.Закрыть программу\n Выберите цифру меню и нажмите Enter "))
