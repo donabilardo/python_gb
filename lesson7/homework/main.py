@@ -1,15 +1,17 @@
+import funct
 contact = {}
 
 
 def display_contact():
     print(contact.items())
     print("Имя\t\tТелефон")
-    for key in contact:
-        print("{}\t\t{}".format(key,contact.get(key)))
+    for key, value in contact:
+        #print("{}\t\t{}".format(key,contact.get(key)))
+        print(f'Имя {key} || телефон {value}')
 
 
 while True:
-    choice = int(input(" 1. Добавить контакт \n 2. Найти контакт \n 3.Отобразить контакты\n 4. Редактировать контакт \n 5. Удалить контакт \n 6. Экспортировать контакты\n 7.Закрыть программу\n Выберите цифру меню и нажмите Enter "))
+    choice = int(input(" 1. Добавить контакт \n 2. Найти контакт \n 3. Отобразить контакты\n 4. Редактировать контакт \n 5. Удалить контакт \n 6. Экспортировать контакты в CSV\n 8.Закрыть программу\n Выберите цифру меню и нажмите Enter "))
     if choice == 1:
         name = input("Имя контакта ")
         phone = input("Телефон контакта")
@@ -43,5 +45,8 @@ while True:
             display_contact()
         else:
             print("\n Контакт не найден в адресной книге \n")
+    elif choice == 6:
+        funct.export_phonebook(contact)
+        #print(contact)
     else:
         break
