@@ -1,4 +1,3 @@
-import funct
 import csv
 
 contact = {}
@@ -11,13 +10,13 @@ def display_contact():
 #        print("{}\t\t{}".format(key,contact.get(key)))
 #       print(f'Имя {key} || телефон {value}')
     for user, phone in contact.items():
-        print(f"Имя: {user}  Телефон: {phone} \n")
+        print(f"Имя: {user}  Телефон: {phone}".center(5,"*"))
 
 while True:
-    choice = int(input(" 1. Добавить контакт \n 2. Найти контакт \n 3. Отобразить контакты\n 4. Редактировать контакт \n 5. Удалить контакт \n 6. Экспортировать контакты в CSV\n 8.Закрыть программу\n Выберите цифру меню и нажмите Enter "))
+    choice = int(input(" 1. Добавить контакт \n 2. Найти контакт \n 3. Отобразить контакты\n 4. Редактировать контакт \n 5. Удалить контакт \n 6. Экспортировать контакты в CSV\n 8. Закрыть программу\n  Выберите цифру меню и нажмите Enter \n "))
     if choice == 1:
-        name = input("Имя контакта ")
-        phone = input("Телефон контакта")
+        name = input("Имя контакта\n")
+        phone = input("Телефон контакта\n")
         contact[name] = phone
     elif choice == 2:
         search_name = input(" \n Имя контакта для поиска  \n ")
@@ -49,7 +48,9 @@ while True:
         else:
             print("\n Контакт не найден в адресной книге \n")
     elif choice == 6:
-        funct.export_phonebook(contact)
-        #print(contact)
+        with open("lesson7\homework\phonebook.csv", "w", encoding="utf-8", newline="") as phonebook:
+            for name, phone in contact.items():
+                writer = csv.writer(phonebook)
+                writer.writerow([name, phone])
     else:
         break
