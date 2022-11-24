@@ -2,10 +2,6 @@ import csv
 
 contact = {}
 
-
-
-
-
 def display_contact():
     for user, phone in contact.items():
         print(f"Имя: {user}  Телефон: {phone}".center(5,"*"))
