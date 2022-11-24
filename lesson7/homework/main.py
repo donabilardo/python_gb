@@ -3,12 +3,10 @@ import csv
 contact = {}
 
 
+
+
+
 def display_contact():
-#    print(contact.items())
-#    print("Имя\t\tТелефон")
-#    for key, value in contact:
-#        print("{}\t\t{}".format(key,contact.get(key)))
-#       print(f'Имя {key} || телефон {value}')
     for user, phone in contact.items():
         print(f"Имя: {user}  Телефон: {phone}".center(5,"*"))
 
@@ -49,6 +47,9 @@ while True:
             print("\n Контакт не найден в адресной книге \n")
     elif choice == 6:
         with open("lesson7\homework\phonebook.csv", "w", encoding="utf-8", newline="") as phonebook:
+            fieldname = ['name1', 'phone1']
+            writer = csv.DictWriter(phonebook,fieldnames=fieldname)
+            writer.writeheader()
             for name, phone in contact.items():
                 writer = csv.writer(phonebook)
                 writer.writerow([name, phone])
