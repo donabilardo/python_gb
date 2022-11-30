@@ -1,6 +1,6 @@
 # Крестики нолики на Python
 
-![Крестики нолики на питон](https://www.meme-arsenal.com/memes/61763fa42ea26cb5790250d0394ddc31.jpg)
+![Крестики нолики на питон](https://media.tproger.ru/uploads/2017/05/memes-python.jpg)
 
 
 
