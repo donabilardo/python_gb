@@ -1,4 +1,11 @@
-from colorama import Fore, Back, Style
+from func import init_game
 
 
-print(Fore.BLUE + "ЗАЕБАЛО" + Style.RESET_ALL)
+
+init_game()
+
+
+
+
+
+#print(func.Fore.BLUE + "ЗАЕБАЛО" + Style.RESET_ALL)
