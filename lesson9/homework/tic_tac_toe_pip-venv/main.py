@@ -1,6 +1,20 @@
 from tkinter import *
 import random, time
 
+def stop_game():
+    global game_left
+    for item in game_left:
+        buttons[item].config(bg="white", state="disabled")
+
+
+def win(n):
+    global game
+    if (game[0] == n and game[1] == n and game[2] == n) or (game[3] == n and game[4] == n and game[5] == n)  or (game[6] == n and game[7] == n and game[8] == n) \
+       (game[0] == n and game[3] == n and game[6] == n) or (game[1] == n and game[4] == n and game[7] == n) or (game[2] == n and game[5] == n and game[8] == n) \
+       (game[0] == n and game[4] == n and game[8] == n) or (game[2] == n and game[4] == n and game[6] == n):
+        return True
+
+
 
 def push(b):
     global game
@@ -8,7 +22,7 @@ def push(b):
     global turn
 
     game[b] = "X"
-    buttons[b].config(text="X", state="disabled", bg='#B533FF', fg='WHITE')
+    buttons[b].config(text="X", state="disabled", bg='#B5333F')
     game_left.remove(b)
 
 
@@ -18,12 +32,31 @@ def push(b):
         t = 4
     if turn > 0:
         t = 8 - b
+        if t not in game_left:
+            try:
+                t = random.choice(game_left)
+            except IndexError:
+                label["text"] = "Игра окончена!"
+                stop_game()
 
  
     game[t] = "O"
+    
     time.sleep(0.4)
-    buttons[t].config(text="O", state="disabled", fg="BLUE")
+    buttons[t].config(text="O", state="disabled")
     turn += 1
+    if win('X'):
+        label["text"] = "Кресты победили"
+        stop_game()
+    elif win("O"):
+        label["text"] = "Ноли победили"
+        stop_game()
+    else:
+        if (len(game_left) > 1):
+            game_left.remove(t)
+        else:
+            label["text"] = "Игра окончена!"
+        
 
 
 
@@ -35,7 +68,7 @@ turn = 0
 root = Tk()
 root.title("")
 label = Label(width=22, text="Крестики нолики", font=("Arial", 18,"bold"))
-buttons = [Button(width=5, height=2, font=("Arial", 28,"bold"), command = lambda x = i: push(x)) for i in range(9)] 
+buttons = [Button(width=5, height=2, font=("Arial", 31,"bold"), command = lambda x = i: push(x)) for i in range(9)] 
 
 label.grid(row=0, column=0, columnspan=3)
 row = 1; col = 0
