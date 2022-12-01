@@ -2,10 +2,15 @@
 
 ![Крестики нолики на питон](https://media.tproger.ru/uploads/2017/05/memes-python.jpg)
 
+> При созданиии приложения использовалось виртуальное окружение 
+python -m venv .venv
 
+>
 
 ### Используемые библиотеки:
-1. colorama==0.4.6
+1. tk==0.1.0
+2. random
+3. time
 
 
 
@@ -13,3 +18,7 @@
 ```
 pip install -r requirements.txt
 ```
+
+
+#### Для запуска приложения необходимо запустить main.py
+
