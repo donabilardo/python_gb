@@ -17,7 +17,7 @@
 # Ignore all local history of files
 .history
 .ionide
-
+.idea
 # Support for Project snippet scope
 .vscode/*.code-snippets
 

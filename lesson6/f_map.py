@@ -15,4 +15,3 @@ print(exampleList)
 
 
 
-print(a)
