@@ -9,7 +9,8 @@
 
 # Local History for Visual Studio Code
 .history/
-
+.folder
+venv
 # Built Visual Studio Code Extensions
 *.vsix
 
