@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup as bs
 import lxml
 import csv
 import json
+import re #регулярные выражения
+
 
 header = {
     "accept" : "*/*",
@@ -26,20 +28,28 @@ with open("prostor.html", "r", encoding="utf-8") as html_file: #читаем п�
 
 soup = bs(src, "lxml") #получаем суп
 
-data = soup.find("div", class_ = "wrap-content-tab") # суп из найденых дивов которые содержат информацию о фильме
+data = soup.find_all("div", class_ = "wrap-content-tab") # суп из найденых дивов которые содержат информацию о фильме
+
+for item in data:
+
+    film_name = item.find("div", class_ = "name").find("h3").find("a").text.strip()
+    film_genre = item.find("div", class_ = "genre").find("span").text.strip()
+    film_duration = item.find("div", class_ = "duration").find("span").text.strip()
+    film_poster_prev = HOST + item.find("div", class_ = "wrap-img").find("a").find("img").get("src")
+    film_popup = AJAX_URL + item.find("div", class_ = "wrap-img").find("a").get("data-movie")
+
+    src_get_popup = requests.get(film_popup, headers=header)
+    src_popup = src_get_popup.text
+    soup_popup = bs(src_popup, "lxml")
+    film_decription = soup_popup.find("div", class_ = "right__descript-move").find("p").text.strip()
+
+    print(f'Фильм: {film_name} \nЖанр: {film_genre} \nПродолжительность: {film_duration} \nПостер(мин): {film_poster_prev} \n{film_decription}\n\n')
 
 
-film_name = data.find("div", class_ = "name").find("h3").find("a").text.strip()
-film_genre = data.find("div", class_ = "genre").find("span").text.strip()
-film_duration = data.find("div", class_ = "duration").find("span").text.strip()
-film_poster_prev = HOST + data.find("div", class_ = "wrap-img").find("a").find("img").get("src")
-film_popup = AJAX_URL + data.find("div", class_ = "wrap-img").find("a").get("data-movie")
-
-#src_get_popup = requests.get(film_popup, headers=header)
-#src_popup = src_get_popup.text
 
 
-print(film_poster_prev)
+
+#print(film_poster_prev)
 
 
 
