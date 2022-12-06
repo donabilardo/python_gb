@@ -45,3 +45,7 @@ film_genre = ""
 film_duration = ""
 film_discont = ""
 price_film = ""
+
+
+soup_html_parser = bs(src, "html.parser")
+
