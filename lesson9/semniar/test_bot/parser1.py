@@ -48,8 +48,8 @@ for item in data:
     src_popup = src_get_popup.text
     soup_popup = bs(src_popup, "lxml")
     film_decription = soup_popup.find("div", class_ = "right__descript-move").find("p").text.strip()
-
-    print(f'Фильм: {film_name} \nЖанр: {film_genre} \nПродолжительность: {film_duration} \nПостер(мин): {film_poster_prev} \n{film_decription}\n\n')
+    film_youtube = soup_popup.find("div", class_ = "wrap-play").find("a").get("href")
+    print(f'Фильм: {film_name} \nЖанр: {film_genre} \nПродолжительность: {film_duration} \nПостер(мин): {film_poster_prev} \n{film_decription}\nСмотреть превью: {film_youtube}\n\n')
 
 
 
