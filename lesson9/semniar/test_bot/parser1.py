@@ -49,7 +49,13 @@ for item in data:
     soup_popup = bs(src_popup, "lxml")
     film_decription = soup_popup.find("div", class_ = "right__descript-move").find("p").text.strip()
     film_youtube = soup_popup.find("div", class_ = "wrap-play").find("a").get("href")
-    print(f'Фильм: {film_name} \nЖанр: {film_genre} \nПродолжительность: {film_duration} \nПостер(мин): {film_poster_prev} \n{film_decription}\nСмотреть превью: {film_youtube}\n\n')
+    film_producer = soup_popup.find("div", class_ = "list-movie").find("p").text.strip()
+    film_in_cast = soup_popup.find("div", class_ = "list-movie").find_next("div", class_ = "item__list-movie").find("p").text.strip()
+
+    print(f'Фильм: {film_name} \nЖанр: {film_genre} \nПродолжительность: {film_duration} \
+    \nПостер(мин): {film_poster_prev} \n{film_decription}\nСмотреть превью: {film_youtube} \
+    \nПродюсер: {film_producer}\nВ ролях: {film_in_cast} \
+    \n\n')
 
 
 
