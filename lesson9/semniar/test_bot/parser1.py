@@ -21,6 +21,8 @@ header = {
 HOST = "https://kinoprostor.ru"
 URL = "https://kinoprostor.ru/"
 AJAX_URL = "https://kinoprostor.ru/?ajax=Y&movie="
+result = []
+result_item = {}
 
 def get_html_source():
     req = requests.get(URL, headers=header)
@@ -38,6 +40,8 @@ data = soup.find_all("div", class_ = "wrap-content-tab") # суп из найд�
 
 for item in data:
 
+    random_sleep_time()
+
     film_name = item.find("div", class_ = "name").find("h3").find("a").text.strip()
     film_genre = item.find("div", class_ = "genre").find("span").text.strip()
     film_duration = item.find("div", class_ = "duration").find("span").text.strip()
@@ -52,16 +56,26 @@ for item in data:
     film_producer = soup_popup.find("div", class_ = "list-movie").find("p").text.strip()
     film_in_cast = soup_popup.find("div", class_ = "list-movie").find_next("div", class_ = "item__list-movie").find("p").text.strip()
 
-    print(f'Фильм: {film_name} \nЖанр: {film_genre} \nПродолжительность: {film_duration} \
-    \nПостер(мин): {film_poster_prev} \n{film_decription}\nСмотреть превью: {film_youtube} \
-    \nПродюсер: {film_producer}\nВ ролях: {film_in_cast} \
-    \n\n')
+    result.append({\
+        "film_name" : film_name, "film_genre" : film_genre, \
+        "film_duration" : film_duration, "film_poster_prev" : film_poster_prev, \
+        "film_popup": film_popup, "film_decription" : film_decription, \
+        "film_youtube" : film_youtube, "film_producer" : film_producer \
+            })
+
+
+
+
+#print(f'Фильм: {film_name} \nЖанр: {film_genre} \nПродолжительность: {film_duration} \
+#    \nПостер(мин): {film_poster_prev} \n{film_decription}\nСмотреть превью: {film_youtube} \
+#    \nПродюсер: {film_producer}\nВ ролях: {film_in_cast} \
+#    \n\n') 
 
 
 
 
 
-#print(film_poster_prev)
+print(result[3])
 
 
 
