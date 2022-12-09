@@ -31,6 +31,7 @@ def get_html_source():
         html_file.write(src_html)
 
 
+
 with open("prostor.html", "r", encoding="utf-8") as html_file: #читаем полученный на предыдущем этапе html
     src = html_file.read()
 
@@ -53,19 +54,20 @@ for item in data:
     src_get_popup = requests.get(film_popup, headers=header)
     src_popup = src_get_popup.text
     soup_popup = bs(src_popup, "lxml")
+
+
     film_decription = soup_popup.find("div", class_ = "right__descript-move").find("p").text.strip()
+    film_decription = film_decription[0: len(film_decription) - 28]
     film_youtube = soup_popup.find("div", class_ = "wrap-play").find("a").get("href")
-    #film_producer = soup_popup.find("div", class_ = "list-movie").find("p").text.strip()
-    #appael.find_all('p', class_='appeal-element-bottom')[2]
-    #film_producer = soup_popup.find_all("div", class_ = "item__list-movie")[count_for_popup_list]
-
-
-
+    #film_popup_list = soup_popup.find_all("div", class_ = "title__list-movie")
+    film_producer = soup_popup.find("div", class_ = "list-movie").next_element.next_element.next_element.next_element.next_element.next_element
+    film_role = soup_popup.find("div", class_ = "list-movie").next_element.next_element.next_element.next_element.next_element.next_element.next_element.next_element.text.strip()
+    film_role = film_role.replace("В ролях", "")
     result.append({\
         "film_name" : film_name, "film_genre" : film_genre, \
         "film_duration" : film_duration, "film_poster_prev" : film_poster_prev, \
         "film_popup": film_popup, "film_decription" : film_decription, \
-        "film_youtube" : film_youtube, "film_producer" : film_producer \
+        "film_youtube" : film_youtube, "film_producer" : film_producer,  "film_role" : film_role\
             })
 
     count_for_popup_list = count_for_popup_list + 1
@@ -73,18 +75,13 @@ for item in data:
 
 
 
-#print(f'Фильм: {film_name} \nЖанр: {film_genre} \nПродолжительность: {film_duration} \
-#    \nПостер(мин): {film_poster_prev} \n{film_decription}\nСмотреть превью: {film_youtube} \
-#    \nПродюсер: {film_producer}\nВ ролях: {film_in_cast} \
-#    \n\n') 
+""" print(f'Фильм: {film_name} \nЖанр: {film_genre} \nПродолжительность: {film_duration} \
+    \nПостер(мин): {film_poster_prev} \n{film_decription}\nСмотреть превью: {film_youtube} \
+    \nПродюсер: {film_producer}\nВ ролях: {film_role} \
+    \n\n')  """
 
 
 
-
-
-print(result[3])
-
-
-
+print(result)
     
 
