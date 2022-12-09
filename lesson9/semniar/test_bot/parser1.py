@@ -51,6 +51,19 @@ for item in data:
     film_poster_prev = HOST + item.find("div", class_ = "wrap-img").find("a").find("img").get("src")
     film_popup = AJAX_URL + item.find("div", class_ = "wrap-img").find("a").get("data-movie")
 
+    film_type = item.find("div", class_ = "time-film").get("data-format")
+
+    time_film = item.find_all("div", class_ = "time-film").string
+    time_film_list = []
+    for i in time_film:
+        time_film_list.append(i)
+        
+    price_film = item.find_all("div", class_ = "price-film").string
+    price_film_list = []
+    for i in price_film:
+        price_film_list.append(i)
+
+
     src_get_popup = requests.get(film_popup, headers=header)
     src_popup = src_get_popup.text
     soup_popup = bs(src_popup, "lxml")
@@ -67,7 +80,8 @@ for item in data:
         "film_name" : film_name, "film_genre" : film_genre, \
         "film_duration" : film_duration, "film_poster_prev" : film_poster_prev, \
         "film_popup": film_popup, "film_decription" : film_decription, \
-        "film_youtube" : film_youtube, "film_producer" : film_producer,  "film_role" : film_role\
+        "film_youtube" : film_youtube, "film_producer" : film_producer,  "film_role" : film_role,\
+        "time_film" : time_film_list, "film_type" : film_type, "price_film" : price_film_list
             })
 
     count_for_popup_list = count_for_popup_list + 1
@@ -75,11 +89,18 @@ for item in data:
 
 
 
-""" print(f'Фильм: {film_name} \nЖанр: {film_genre} \nПродолжительность: {film_duration} \
+print(f'Фильм: {film_name} \nЖанр: {film_genre} \nПродолжительность: {film_duration} \
     \nПостер(мин): {film_poster_prev} \n{film_decription}\nСмотреть превью: {film_youtube} \
-    \nПродюсер: {film_producer}\nВ ролях: {film_role} \
-    \n\n')  """
+    \nПродюсер: {film_producer}\nВ ролях: {film_role} \n"Формат фильма: {film_type} \
+    \nВремя сеанса: {time_film_list} \nСтоимость билета: {price_film_list} \
+    \n\n') 
 
+
+
+
+""" with open("data.csv", "w") as csv_file:
+    writer = csv.writer(csv_file)
+    writer.writerow("Название фильма", "Жанр", "Продолжительность", "Ссылка на постер", "Описнаие фильма", "Ссылка на превью", "Режисер", "В фильме снимались") """
 
 
 print(result)
