@@ -38,6 +38,8 @@ soup = bs(src, "lxml") #получаем суп
 
 data = soup.find_all("div", class_ = "wrap-content-tab") # суп из найденых дивов которые содержат информацию о фильме
 
+count_for_popup_list = 0 #счётчик для перебора описания фильма в попап окне
+
 for item in data:
 
     random_sleep_time()
@@ -53,8 +55,11 @@ for item in data:
     soup_popup = bs(src_popup, "lxml")
     film_decription = soup_popup.find("div", class_ = "right__descript-move").find("p").text.strip()
     film_youtube = soup_popup.find("div", class_ = "wrap-play").find("a").get("href")
-    film_producer = soup_popup.find("div", class_ = "list-movie").find("p").text.strip()
-    film_in_cast = soup_popup.find("div", class_ = "list-movie").find_next("div", class_ = "item__list-movie").find("p").text.strip()
+    #film_producer = soup_popup.find("div", class_ = "list-movie").find("p").text.strip()
+    #appael.find_all('p', class_='appeal-element-bottom')[2]
+    #film_producer = soup_popup.find_all("div", class_ = "item__list-movie")[count_for_popup_list]
+
+
 
     result.append({\
         "film_name" : film_name, "film_genre" : film_genre, \
@@ -62,6 +67,8 @@ for item in data:
         "film_popup": film_popup, "film_decription" : film_decription, \
         "film_youtube" : film_youtube, "film_producer" : film_producer \
             })
+
+    count_for_popup_list = count_for_popup_list + 1
 
 
 
