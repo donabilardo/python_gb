@@ -8,5 +8,15 @@ from time import sleep
 from tqdm import tqdm
 import requests
 
-
+browser = Chrome("chromedriver.exe")
+url = "https://2ip.ru/"
+sleep(10)
 print("hello world !!!")
+
+#browser.get(url)
+
+def main():
+    pass
+
+if __name__ == '__main__':
+    main()
