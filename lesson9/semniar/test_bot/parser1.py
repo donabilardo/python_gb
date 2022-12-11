@@ -53,12 +53,12 @@ for item in data:
 
     film_type = item.find("div", class_ = "time-film").get("data-format")
 
-    time_film = item.find_all("div", class_ = "time-film").string
+    time_film = item.find_all("div", class_ = "time-film")
     time_film_list = []
     for i in time_film:
         time_film_list.append(i)
         
-    price_film = item.find_all("div", class_ = "price-film").string
+    price_film = item.find_all("div", class_ = "price-film")
     price_film_list = []
     for i in price_film:
         price_film_list.append(i)
