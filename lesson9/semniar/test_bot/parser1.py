@@ -56,12 +56,12 @@ for item in data:
     time_film = item.find_all("div", class_ = "time-film")
     time_film_list = []
     for i in time_film:
-        time_film_list.append(i)
+        time_film_list.append(i.text)
         
     price_film = item.find_all("div", class_ = "price-film")
     price_film_list = []
     for i in price_film:
-        price_film_list.append(i)
+        price_film_list.append(i.text)
 
 
     src_get_popup = requests.get(film_popup, headers=header)
