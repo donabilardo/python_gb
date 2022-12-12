@@ -30,7 +30,7 @@ def get_html_source():
     with open("prostor.html", "w", encoding="utf-8") as html_file:
         html_file.write(src_html)
 
-
+#get_html_source()
 
 with open("prostor.html", "r", encoding="utf-8") as html_file: #читаем полученный на предыдущем этапе html
     src = html_file.read()
@@ -89,11 +89,11 @@ for item in data:
 
 
 
-print(f'Фильм: {film_name} \nЖанр: {film_genre} \nПродолжительность: {film_duration} \
+""" print(f'Фильм: {film_name} \nЖанр: {film_genre} \nПродолжительность: {film_duration} \
     \nПостер(мин): {film_poster_prev} \n{film_decription}\nСмотреть превью: {film_youtube} \
     \nПродюсер: {film_producer}\nВ ролях: {film_role} \n"Формат фильма: {film_type} \
     \nВремя сеанса: {time_film_list} \nСтоимость билета: {price_film_list} \
-    \n\n') 
+    \n\n')  """
 
 
 
@@ -103,6 +103,9 @@ print(f'Фильм: {film_name} \nЖанр: {film_genre} \nПродолжите�
     writer.writerow("Название фильма", "Жанр", "Продолжительность", "Ссылка на постер", "Описнаие фильма", "Ссылка на превью", "Режисер", "В фильме снимались") """
 
 
-print(result)
+
+
+for i in result[5]["time_film"]:
+    print(i)
     
 
