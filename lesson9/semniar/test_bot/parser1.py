@@ -48,18 +48,18 @@ for item in data:
 
     film_type = item.find("div", class_ = "time-film").get("data-format")
 
-    time_film = item.find_all("div", class_ = "time-film")
-    time_film_list = []
+    time_film = item.find_all("div", class_ = "time-film") #получаем все элементы с датой показа
+    time_film_list = [] 
     for i in time_film:
         time_film_list.append(i.text)
         
-    price_film = item.find_all("div", class_ = "price-film")
+    price_film = item.find_all("div", class_ = "price-film") #получаем все элементы со стоимостью билета на кино
     price_film_list = []
     for i in price_film:
         price_film_list.append(i.text)
 
-    time_and_price = zip(time_film_list,price_film_list)
-
+    time_and_price = zip(time_film_list,price_film_list) #склеиваем дату показа и стоимость кинофильма
+    time_and_price_dict = dict(time_and_price) #преобразуем кортеж в словарь
 
 
     src_get_popup = requests.get(film_popup, headers=header)
@@ -82,7 +82,7 @@ for item in data:
         "film_popup": film_popup, "film_decription" : film_decription, \
         "film_youtube" : film_youtube, "film_producer" : film_producer,  "film_role" : film_role,\
         "film_type" : film_type, "time_film" : time_film_list, "price_film" : price_film_list, \
-        "time_and_price": list(time_and_price)
+        "time_and_price": time_and_price_dict
             })
 
 
@@ -100,9 +100,12 @@ for item_film in result:
     print(f"Режиссёр: {item_film['film_producer']}")
     print(f"В ролях: {item_film['film_role']}")
     print(f"Постер: {item_film['film_poster_prev']}")
-    print(f"Трейлер: {item_film['film_youtube']}")
-    #print(f"{item_film['time_and_price']}" + " \n \n")
-    for i in item_film['time_and_price']:
-        print(i)
-        print(type(i))
-    print("\n")
+    print(f"Трейлер: {item_film['film_youtube']} \n")
+
+    for key, value in item_film['time_and_price'].items():
+        print(f"Начало сеанса: {key} Стоимость: {value}")
+
+
+
+
+    
