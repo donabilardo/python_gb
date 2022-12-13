@@ -86,14 +86,12 @@ for item in data:
             })
 
 
-#print(result[0])
 
 
-#print(result[0]["time_film"][4])
+with open ("shedule.json", "w", encoding="utf-8") as json_file:
+    json.dump(result, json_file, indent=2, ensure_ascii=False)
 
-#print(result[0]["time_and_price"][4][0])
-
-for item_film in result:
+""" for item_film in result:
     print(f"Фильм: {item_film['film_name']} [{item_film['film_type']}]")
     print(f"{item_film['film_decription']}")
     print(f"Жанр: {item_film['film_genre']}   {item_film['film_duration']}")
@@ -103,9 +101,9 @@ for item_film in result:
     print(f"Трейлер: {item_film['film_youtube']} \n")
 
     for key, value in item_film['time_and_price'].items():
-        print(f"Начало сеанса: {key} Стоимость: {value}")
+        print(f"Начало сеанса: {key} Стоимость: {value}") """
 
 
 
-
+print(result[0])
     
